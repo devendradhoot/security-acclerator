@@ -7,26 +7,19 @@ spec:
   selector:
     matchLabels:
       app: mydata
-  
   template:
     metadata:
       labels:
         app: mydata
-  
-      
     spec:
-    
-      
       serviceAccountName: default
       automountServiceAccountToken: false 
       containers:
       - image: nginx
         name: mydata
         securityContext:
-          
           runAsNonRoot: true
           runAsUser: 10000
-         
         resources:
           requests:
             memory: "64Mi"
@@ -39,7 +32,6 @@ spec:
           mountPath: /usr/share/nginx/html
         ports:
         - containerPort: 80
-      
       volumes:
       - name: index-html
         configMap:
